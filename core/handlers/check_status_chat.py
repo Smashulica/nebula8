@@ -60,7 +60,7 @@ def check_status(update, context):
     """
     if update.effective_message.group_chat_created == True or update.effective_message.supergroup_chat_created == True:
         welcome_bot(update,context)
-        l_txt = "#Log <b>Bot added to group</b> {}\nId: <code>{}</code>".format(chat_title,chat_id)
+        l_txt = "#Log <b>Botu a fost adaugat pe grupul</b> {}\nId: <code>{}</code>".format(chat_title,chat_id)
         telegram_loggers(update,context,l_txt)
     """
     This feature changes the chat title
