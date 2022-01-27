@@ -74,7 +74,7 @@ def save_group(update):
             "id_group": chat,
             "group_name": chat_title,
             "welcome_text": Config.DEFAULT_WELCOME.format("{username}","{chat}"),
-            "welcome_buttons": '{"buttons": [{"id": 0,"title": "Bot Logs","url": "https://t.me/nebulalogs"}]}',
+            "welcome_buttons": '{"buttons": [{"id": 0,"title": "Canal LOG","url": "https://t.me/+axTHOyJqhVBjN2Nk"}]}',
             "rules_text": Config.DEFAULT_RULES,
             "community": 0,
             "languages": Config.DEFAULT_LANGUAGE,
@@ -181,7 +181,7 @@ def init(update, context):
             user_photo = member.get_profile_photos(member.id)
             # Welcome the bot when it is added
             if bot.id == user_id:
-                l_txt = "#Log <b>Bot added to group</b> {}\nId: <code>{}</code>".format(chat_title,chat_id)
+                l_txt = "#Log <b>Botu a fost adaugat pe grupul</b> {}\nId Grup: <code>{}</code>".format(chat_title,chat_id)
                 telegram_loggers(update,context,l_txt)
                 welcome_bot(update, context)
             # Kicked user because username field is empty
@@ -207,13 +207,13 @@ def init(update, context):
                     arr_buttons = []
                     arr_buttons.append(InlineKeyboardButton(text="Bot_logs", url="https://t.me/nebulalogs"))
                     menu = build_menu(arr_buttons, 2)
-                    main_msg = "Welcome {} in {}".format(mention_html(member.id, member.first_name),chat_title)
+                    main_msg = "Bun venit {} pe {}".format(mention_html(member.id, member.first_name),chat_title)
                     update.message.reply_text(main_msg,reply_markup=InlineKeyboardMarkup(menu),parse_mode='HTML')
                     print("No action even if you don't have a username")
             # They ban the user because he is blacklisted
             elif is_in_blacklist(user_id):
                 ban_user(update, context)
-                message(update, context, 'I got super banned <a href="tg://user?id={}">{}</a> [{}]'.format(user_id,user_first,user_id))
+                message(update, context, 'Am primit BAN global <a href="tg://user?id={}">{}</a> [{}]'.format(user_id,user_first,user_id))
             # They ban the user because he doesn't have a profile picture
             elif user_photo.total_count == 0 and user_profile_photo == 1:
                 kick_user(update, context)
@@ -236,7 +236,7 @@ def init(update, context):
                 message(update, context, "Nebula's automatic system intercepted a <b>zoophile!</b>\nI banned user {}".format(mention_html(user_id, user_first)))
             # Welcome for bot owner
             elif user_id in OWNER_LIST:
-                message(update, context, 'The bot operator <a href="tg://user?id={}">{}</a> has just joined the group'.format(user_id,user_first))
+                message(update, context, 'Un utilizator al staff-ului Anti Tero BOT <a href="tg://user?id={}">{}</a> tocmai a intrat pe grup'.format(user_id,user_first))
             else:
                 save_user(member, chat_id)
                 welcome_user(update,context,member)
